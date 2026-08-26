@@ -1,6 +1,6 @@
 # HomeLab Infrastructure: Multi-Instance Minecraft Services and Observability Stack
 
-Este repositorio contiene la infraestructura como código (IaC) para la gestión, despliegue y monitoreo de múltiples instancias de servidores de Minecraft y servicios asociados. La solución se ejecuta en un servidor físico local sobre Arch Linux, utilizando contenedores para garantizar el aislamiento y la portabilidad.
+Este repositorio contiene la infraestructura como configuracion declarativa para la gestión, despliegue y monitoreo de múltiples instancias de servidores de Minecraft y servicios asociados. La solución se ejecuta en un servidor físico local sobre Arch Linux, utilizando contenedores para garantizar el aislamiento y la portabilidad.
 
 ## Arquitectura del Sistema
 
@@ -18,7 +18,7 @@ El sistema está diseñado en tres capas principales que aíslan el tráfico, ej
    - **Recolección de Métricas:** Prometheus recopila métricas de rendimiento tanto del sistema operativo del host como de los contenedores en ejecución.
    - **Visualización:** Grafana actúa como la interfaz de visualización, consolidando las métricas en tableros de control para monitorizar el uso de CPU, memoria y almacenamiento en tiempo real.
 
-## Implementación de Seguridad (SecOps)
+## Implementación de Seguridad
 
 La infraestructura se diseñó bajo principios de seguridad de sistemas para mitigar vectores de ataque comunes:
 

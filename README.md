@@ -1,61 +1,3 @@
-# HomeLab Infrastructure: Multi-Instance Minecraft Services
-
-Infraestructura de homelab para ejecutar y monitorizar varias instancias de servidores de Minecraft mediante Docker Compose.
-
-El proyecto fue desplegado sobre un servidor físico con Arch Linux y utiliza contenedores para separar los servicios, mantener los datos persistentes y facilitar la administración del entorno.
-
-## Estado del proyecto
-
-**Proyecto finalizado como ejercicio de aprendizaje.**
-
-Este repositorio representa una primera versión funcional de una infraestructura personal para servidores de Minecraft. No se encuentra en desarrollo activo y no pretende ser una solución universal ni estar preparada para entornos de producción.
-
-Los principales objetivos fueron aprender y practicar:
-
-- Docker y Docker Compose.
-- Administración básica de servicios Linux.
-- Despliegue de varias instancias.
-- Persistencia de datos mediante volúmenes.
-- Monitorización con Prometheus y Grafana.
-- Observabilidad de contenedores.
-- Documentación de incidentes mediante post-mortems.
-
-## Arquitectura
-
-La infraestructura está dividida en tres áreas principales:
-
-### Servicios de Minecraft
-
-Se ejecutan varias instancias independientes dentro de contenedores, incluyendo:
-
-- Servidores modificados de Minecraft Java Edition.
-- Instancias de Minecraft Bedrock Edition.
-- Modpacks como DawnCraft y Divine Journey 2.
-
-Cada instancia utiliza su propio directorio de datos para conservar mundos, configuraciones, logs y archivos generados por el servidor.
-
-### Red y exposición
-
-Los servicios se conectan mediante una red interna de Docker y únicamente se exponen los puertos necesarios hacia el host.
-
-La infraestructura original también utilizaba un servicio de DNS dinámico para mantener accesible el servidor desde Internet cuando cambiaba la dirección IP pública.
-
-### Monitorización
-
-El proyecto incluye una pequeña pila de observabilidad compuesta por:
-
-- **Prometheus:** recopilación de métricas.
-- **Grafana:** visualización de métricas mediante dashboards.
-- **cAdvisor:** monitorización de los contenedores.
-
-La monitorización permite observar principalmente:
-
-- Uso de CPU.
-- Uso de memoria.
-- Estado de los contenedores.
-- Uso de almacenamiento.
-- Rendimiento general del host.
-
 ## Estructura del repositorio
 
 ```text
@@ -71,9 +13,9 @@ La monitorización permite observar principalmente:
 ├── y-0/
 └── y-1/
 
-
 Los directorios dawncraft/, divine_journey2/, y-0/ y y-1/ se crean localmente en el servidor y no forman parte del control de versiones.
-Contienen los mundos, configuraciones, logs, mods, plugins y demás archivos generados por las instancias de Minecraft.
+
+Estos directorios contienen los mundos, configuraciones, logs, mods, plugins y demás archivos generados por las instancias de Minecraft.
 Requisitos
 
 Para ejecutar el proyecto se necesita:
@@ -85,24 +27,22 @@ Para ejecutar el proyecto se necesita:
     Espacio de almacenamiento para los mundos y archivos de los servidores.
     Puertos disponibles para Minecraft y las herramientas de monitorización.
 
-El proyecto fue desarrollado y utilizado principalmente sobre Arch Linux, aunque la configuración puede adaptarse a otras distribuciones
-Linux compatibles con Docker Compose.
-
+El proyecto fue desarrollado y utilizado principalmente sobre Arch Linux, aunque la configuración puede adaptarse a otras distribuciones compatibles con Docker Compose.
 Despliegue
 1. Clonar el repositorio
+bash
 
 git clone https://github.com/EarthHex/proyect-1-mc-server-
 cd proyect-1-mc-server-
 
-
 2. Crear los directorios de datos
+bash
 
 mkdir -p dawncraft divine\_journey2 y-0 y-1
 
-
 3. Revisar la configuración
 
-Antes de iniciar los servicios, revisa el archivo docker-compose.yml y ajusta, si es necesario:
+Antes de iniciar los servicios, revisa docker-compose.yml y ajusta, si es necesario:
 
     Puertos.
     Versiones de Minecraft.
@@ -112,32 +52,31 @@ Antes de iniciar los servicios, revisa el archivo docker-compose.yml y ajusta, s
     Variables de entorno.
 
 4. Iniciar los servicios
-
+bash
 
 docker compose up -d
 
-
 5. Comprobar el estado de los contenedores
+bash
 
 docker compose ps
-
 
 6. Consultar los logs
 
 Para consultar los logs de todos los servicios:
+bash
 
 docker compose logs -f
 
-
 Para consultar los logs de un servicio concreto:
+bash
 
 docker compose logs -f nombre-del-servicio
 
-
 7. Detener la infraestructura
+bash
 
 docker compose down
-
 
 Configuración
 
@@ -194,8 +133,13 @@ Durante el despliegue original se aplicaron algunas medidas básicas:
 
 Estas medidas forman parte de la configuración del entorno original y no todas están automatizadas por este repositorio.
 
-Este proyecto no debe considerarse una configuración de seguridad completa. Antes de utilizar una infraestructura similar en Internet,
-es necesario revisar el firewall, las credenciales, los puertos expuestos y las reglas de acceso.
+Este proyecto no debe considerarse una configuración de seguridad completa. Antes de utilizar una infraestructura similar en Internet, es necesario revisar:
+
+    El firewall.
+    Las credenciales.
+    Los puertos expuestos.
+    Las reglas de acceso.
+
 Limitaciones conocidas
 
     No incluye un sistema automatizado de copias de seguridad.

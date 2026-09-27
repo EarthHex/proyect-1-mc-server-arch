@@ -72,7 +72,8 @@ La monitorización permite observar principalmente:
 └── y-1/
 
 
-Los directorios dawncraft/, divine_journey2/, y-0/ y y-1/ se crean localmente en el servidor y no forman parte del control de versiones. Contienen los mundos, configuraciones, logs, mods, plugins y demás archivos generados por las instancias de Minecraft.
+Los directorios dawncraft/, divine_journey2/, y-0/ y y-1/ se crean localmente en el servidor y no forman parte del control de versiones.
+Contienen los mundos, configuraciones, logs, mods, plugins y demás archivos generados por las instancias de Minecraft.
 Requisitos
 
 Para ejecutar el proyecto se necesita:
@@ -84,7 +85,9 @@ Para ejecutar el proyecto se necesita:
     Espacio de almacenamiento para los mundos y archivos de los servidores.
     Puertos disponibles para Minecraft y las herramientas de monitorización.
 
-El proyecto fue desarrollado y utilizado principalmente sobre Arch Linux, aunque la configuración puede adaptarse a otras distribuciones Linux compatibles con Docker Compose.
+El proyecto fue desarrollado y utilizado principalmente sobre Arch Linux, aunque la configuración puede adaptarse a otras distribuciones
+Linux compatibles con Docker Compose.
+
 Despliegue
 1. Clonar el repositorio
 
@@ -191,7 +194,8 @@ Durante el despliegue original se aplicaron algunas medidas básicas:
 
 Estas medidas forman parte de la configuración del entorno original y no todas están automatizadas por este repositorio.
 
-Este proyecto no debe considerarse una configuración de seguridad completa. Antes de utilizar una infraestructura similar en Internet, es necesario revisar el firewall, las credenciales, los puertos expuestos y las reglas de acceso.
+Este proyecto no debe considerarse una configuración de seguridad completa. Antes de utilizar una infraestructura similar en Internet,
+es necesario revisar el firewall, las credenciales, los puertos expuestos y las reglas de acceso.
 Limitaciones conocidas
 
     No incluye un sistema automatizado de copias de seguridad.

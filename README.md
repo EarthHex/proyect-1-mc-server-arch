@@ -64,20 +64,15 @@ La monitorización permite observar principalmente:
 ├── README.md
 ├── docker-compose.yml
 ├── prometheus.yml
-└── post-mortems/
-    └── INCIDENT-001.md
+├── post-mortems/
+│   └── INCIDENT-001.md
+├── dawncraft/
+├── divine\_journey2/
+├── y-0/
+└── y-1/
 
-Los directorios de datos de las instancias de Minecraft no se incluyen en el repositorio, ya que contienen mundos, configuraciones, logs y archivos generados durante la ejecución.
 
-Entre los directorios utilizados por la infraestructura se encuentran:
-text
-
-dawncraft/
-divine\_journey2/
-y-0/
-y-1/
-
-Estos directorios deben existir localmente en el servidor donde se despliegue el proyecto.
+Los directorios dawncraft/, divine_journey2/, y-0/ y y-1/ se crean localmente en el servidor y no forman parte del control de versiones. Contienen los mundos, configuraciones, logs, mods, plugins y demás archivos generados por las instancias de Minecraft.
 Requisitos
 
 Para ejecutar el proyecto se necesita:
@@ -92,18 +87,15 @@ Para ejecutar el proyecto se necesita:
 El proyecto fue desarrollado y utilizado principalmente sobre Arch Linux, aunque la configuración puede adaptarse a otras distribuciones Linux compatibles con Docker Compose.
 Despliegue
 1. Clonar el repositorio
-bash
 
 git clone https://github.com/EarthHex/proyect-1-mc-server-
 cd proyect-1-mc-server-
 
-2. Crear los directorios de datos
-bash
 
-mkdir -p dawncraft
-mkdir -p divine\_journey2
-mkdir -p y-0
-mkdir -p y-1
+2. Crear los directorios de datos
+
+mkdir -p dawncraft divine\_journey2 y-0 y-1
+
 
 3. Revisar la configuración
 
@@ -117,39 +109,39 @@ Antes de iniciar los servicios, revisa el archivo docker-compose.yml y ajusta, s
     Variables de entorno.
 
 4. Iniciar los servicios
-bash
+
 
 docker compose up -d
 
+
 5. Comprobar el estado de los contenedores
-bash
 
 docker compose ps
+
 
 6. Consultar los logs
 
 Para consultar los logs de todos los servicios:
-bash
 
 docker compose logs -f
 
+
 Para consultar los logs de un servicio concreto:
-bash
 
 docker compose logs -f nombre-del-servicio
 
+
 7. Detener la infraestructura
-bash
 
 docker compose down
+
 
 Configuración
 
 La configuración principal se encuentra en los siguientes archivos:
-text
 
-docker-compose.yml
-prometheus.yml
+    docker-compose.yml
+    prometheus.yml
 
 El archivo docker-compose.yml define:
 
@@ -179,20 +171,11 @@ Los datos reales no se incluyen en este repositorio porque pueden ocupar mucho e
 Antes de modificar versiones, eliminar contenedores o actualizar modpacks, se recomienda realizar una copia de seguridad manual de los directorios de datos.
 Monitorización
 
-La pila de monitorización sigue esta estructura:
-text
+La pila de monitorización está compuesta por:
 
-Contenedores de Minecraft
-          │
-          └── cAdvisor
-                  │
-                  └── Prometheus
-                          │
-                          └── Grafana
-
-    cAdvisor recopila métricas relacionadas con los contenedores.
-    Prometheus almacena y consulta las métricas disponibles.
-    Grafana permite visualizar la información mediante paneles.
+    cAdvisor: recopila métricas de los contenedores.
+    Prometheus: almacena y consulta las métricas.
+    Grafana: visualiza la información mediante dashboards.
 
 Las direcciones y los puertos exactos dependen de la configuración definida en docker-compose.yml.
 Seguridad
@@ -210,8 +193,6 @@ Estas medidas forman parte de la configuración del entorno original y no todas 
 
 Este proyecto no debe considerarse una configuración de seguridad completa. Antes de utilizar una infraestructura similar en Internet, es necesario revisar el firewall, las credenciales, los puertos expuestos y las reglas de acceso.
 Limitaciones conocidas
-
-Este proyecto presenta las siguientes limitaciones:
 
     No incluye un sistema automatizado de copias de seguridad.
     No incluye un procedimiento automatizado de restauración.
@@ -239,10 +220,7 @@ Su objetivo es registrar:
     Cómo se resolvió.
     Qué aprendizaje dejó el incidente.
 
-Este registro forma parte del proceso de aprendizaje y mejora del proyecto.
 Objetivos cumplidos
-
-Con este proyecto se consiguió:
 
     Ejecutar varias instancias de Minecraft mediante contenedores.
     Separar los servicios dentro de una red de Docker.
@@ -252,11 +230,9 @@ Con este proyecto se consiguió:
     Visualizar métricas mediante Grafana.
     Monitorizar los recursos de los contenedores.
     Practicar administración de Linux y Docker.
-    Documentar un incidente real o simulado mediante un post-mortem.
+    Documentar un incidente mediante un post-mortem.
 
 Posibles mejoras futuras
-
-Este repositorio no seguirá creciendo por el momento. Algunas mejoras posibles para una futura versión serían:
 
     Copias de seguridad automatizadas.
     Restauraciones probadas periódicamente.

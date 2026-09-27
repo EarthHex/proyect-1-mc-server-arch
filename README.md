@@ -69,7 +69,8 @@ La monitorización permite observar principalmente:
 └── post-mortems/
     └── INCIDENT-001.md
 
-Los directorios de datos de las instancias de Minecraft no se incluyen en el repositorio porque contienen mundos, configuraciones, registros y archivos generados durante la ejecución.
+Los directorios de datos de las instancias de Minecraft no se incluyen en el repositorio porque
+contienen mundos, configuraciones, registros y archivos generados durante la ejecución.
 
 Entre los directorios utilizados por la infraestructura se encuentran:
 text
@@ -91,7 +92,8 @@ Para ejecutar el proyecto se necesita:
     Espacio de almacenamiento para los mundos y archivos de los servidores.
     Puertos disponibles para Minecraft y las herramientas de monitorización.
 
-El proyecto se desarrolló y utilizó principalmente sobre Arch Linux, aunque la configuración de Docker Compose puede adaptarse a otras distribuciones Linux.
+El proyecto se desarrolló y utilizó principalmente sobre Arch Linux, aunque la configuración de
+Docker Compose puede adaptarse a otras distribuciones Linux.
 Despliegue
 1. Clonar el repositorio
 bash
@@ -166,7 +168,8 @@ El archivo docker-compose.yml define:
 
 El archivo prometheus.yml define los objetivos desde los que Prometheus obtiene métricas.
 
-Las configuraciones privadas y los datos generados por los servidores se mantienen fuera del control de versiones mediante .gitignore.
+Las configuraciones privadas y los datos generados por los servidores se mantienen fuera del
+control de versiones mediante .gitignore.
 Persistencia de datos
 
 Los datos de cada servidor se almacenan en directorios separados.
@@ -180,9 +183,11 @@ Esto permite conservar:
     Plugins.
     Archivos generados por los contenedores.
 
-Los datos reales no se incluyen en este repositorio porque pueden ocupar mucho espacio y pertenecen a la infraestructura local.
+Los datos reales no se incluyen en este repositorio porque pueden ocupar mucho espacio y
+pertenecen a la infraestructura local.
 
-Antes de modificar versiones, eliminar contenedores o actualizar modpacks, se recomienda realizar una copia de seguridad manual de los directorios de datos.
+Antes de modificar versiones, eliminar contenedores o actualizar modpacks, se recomienda
+realizar una copia de seguridad manual de los directorios de datos.
 Monitorización
 
 Los servicios de monitorización permiten consultar el estado general de la infraestructura.
@@ -195,7 +200,8 @@ Contenedores de Minecraft
     └── Prometheus
         └── Grafana
 
-Prometheus recopila las métricas disponibles y Grafana se utiliza para visualizarlas mediante paneles.
+Prometheus recopila las métricas disponibles y Grafana se utiliza para visualizarlas
+mediante paneles.
 
 Las direcciones y los puertos exactos dependen de la configuración definida en docker-compose.yml.
 Seguridad
@@ -209,9 +215,12 @@ Durante el despliegue original se aplicaron algunas medidas básicas:
     Exclusión de credenciales y archivos sensibles mediante .gitignore.
     Separación de servicios mediante contenedores.
 
-Estas medidas forman parte de la configuración del entorno original y no todas están automatizadas por este repositorio.
+Estas medidas forman parte de la configuración del entorno original y no todas están
+automatizadas por este repositorio.
 
-El repositorio no debe considerarse una configuración de seguridad completa. Antes de utilizar una configuración similar en Internet, cada usuario debe revisar su firewall, sus credenciales, los puertos expuestos y las reglas de acceso.
+El repositorio no debe considerarse una configuración de seguridad completa.
+Antes de utilizar una configuración similar en Internet, cada usuario debe revisar su firewall,
+ sus credenciales, los puertos expuestos y las reglas de acceso.
 Limitaciones conocidas
 
 Este proyecto tiene varias limitaciones:
@@ -231,7 +240,8 @@ Este proyecto tiene varias limitaciones:
 Estas limitaciones forman parte del alcance de esta primera versión.
 Incidentes y aprendizaje
 
-La carpeta post-mortems/ contiene documentación de incidentes ocurridos durante el desarrollo o la ejecución de la infraestructura.
+La carpeta post-mortems/ contiene documentación de incidentes ocurridos durante el desarrollo
+o la ejecución de la infraestructura.
 
 Su objetivo es registrar:
 
@@ -259,7 +269,8 @@ Con este proyecto se consiguió:
 
 Próximas mejoras
 
-Este repositorio no seguirá creciendo por el momento. Algunas mejoras posibles para una futura versión serían:
+Este repositorio no seguirá creciendo por el momento. Algunas mejoras posibles para
+una futura versión serían:
 
     Copias de seguridad automatizadas.
     Restauración probada.
